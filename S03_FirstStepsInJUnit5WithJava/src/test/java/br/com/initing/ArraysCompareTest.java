@@ -1,4 +1,4 @@
-package br.com.initing.math;
+package br.com.initing;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ArraysCompareTest {
 
     @Test
-    // @Timeou(1)
+    // @Timeout(1)
     @Timeout(value = 15, unit = TimeUnit.MILLISECONDS)
     void testSortPerfomance() {
         int[] numbers = {25, 8, 21, 32, 3};
