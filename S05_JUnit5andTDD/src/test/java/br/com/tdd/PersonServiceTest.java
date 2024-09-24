@@ -38,9 +38,9 @@ public class PersonServiceTest {
         assertNotNull(actual, () -> "The createPerson() should not have returned null!");
     }
 
-    @DisplayName("When Create a Person with Success Should Contains FirstName in Returned Person Object")
+    @DisplayName("When Create a Person with Success Should Contains Valid Fields in Returned Person Object")
     @Test
-    void testCreatePerson_WhenSuccess_ShouldContainsFirstNameInReturnedPersonObject() {
+    void testCreatePerson_WhenSuccess_ShouldContainsValidFieldsInReturnedPersonObject() {
 
         // Given
         IPersonService service = new PersonService();
@@ -49,6 +49,13 @@ public class PersonServiceTest {
         Person actual = service.createPerson(person);
 
         //Then
-        assertEquals(person.getFirstName(), actual.getFirstName() , () -> "The firstName is Different!");
+        assertEquals(person.getFirstName(), actual.getFirstName() , () -> "The Person FirstName is Different!");
+        assertEquals(person.getLastName(), actual.getLastName() , () -> "The Person LastName is Different!");
+        assertEquals(person.getAddress(), actual.getAddress() , () -> "The Person Address is Different!");
+        assertEquals(person.getGender(), actual.getGender() , () -> "The Person Gender is Different!");
+        assertEquals(person.getEmail(), actual.getEmail() , () -> "The Person Email is Different!");
     }
+
+
+
 }
