@@ -49,13 +49,12 @@ public class PersonServiceTest {
         Person actual = service.createPerson(person);
 
         //Then
+        assertNotNull(person.getId(), () -> "Person ID is Missing");
         assertEquals(person.getFirstName(), actual.getFirstName() , () -> "The Person FirstName is Different!");
         assertEquals(person.getLastName(), actual.getLastName() , () -> "The Person LastName is Different!");
         assertEquals(person.getAddress(), actual.getAddress() , () -> "The Person Address is Different!");
         assertEquals(person.getGender(), actual.getGender() , () -> "The Person Gender is Different!");
         assertEquals(person.getEmail(), actual.getEmail() , () -> "The Person Email is Different!");
     }
-
-
 
 }
