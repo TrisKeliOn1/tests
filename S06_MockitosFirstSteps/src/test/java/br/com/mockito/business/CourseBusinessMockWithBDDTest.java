@@ -4,6 +4,7 @@ import br.com.mockito.service.CourseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -80,12 +81,41 @@ class CourseBusinessMockWithBDDTest {
         // Given
         given(mockService.retrieveCourses("Leandro")).willReturn(courses);
 
+        String agileCourse = "Agile Desmistificado com Scrum, XP, Kanban e Trello";
+        String architectureCourse = "Arquitetura de Microsserviços do 0 com ASP.NET, .NET 6 e C#";
+        String restSpringCourse = "REST API's RESTFul do 0 à AWS com Spring Boot 3 Java e Docker";
+
         // When
         business.deleteCoursesNotRelatedToSpring("Leandro");
 
         // Then
-        then(mockService).should().deleteCourse("Agile Desmistificado com Scrum, XP, Kanban e Trello");
-        then(mockService).should().deleteCourse("Arquitetura de Microsserviços do 0 com ASP.NET, .NET 6 e C#");
-        then(mockService).should(never()).deleteCourse("REST API's RESTFul do 0 à AWS com Spring Boot 3 Java e Docker");
+        then(mockService).should().deleteCourse(agileCourse);
+        then(mockService).should().deleteCourse(architectureCourse);
+        then(mockService).should(never()).deleteCourse(restSpringCourse);
+    }
+
+    @DisplayName("Delete Courses not Related to Spring Capturing Arguments sould call MethodV2")
+    @Test
+    void testDeleteCoursesNotRelatedToSpring_CapturingArguments_Should_CallMethod_deleteCourseV2() {
+
+        // Given
+        /*
+        courses = Arrays.asList(
+                "Agile Desmistificado com Scrum, XP, Kanban e Trello",
+                "REST API's RESTFul do 0 à AWS com Spring Boot 3 Java e Docker"
+        ); */
+
+        given(mockService.retrieveCourses("Leandro")).willReturn(courses);
+
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        // String agileCourse = "Agile Desmistificado com Scrum, XP, Kanban e Trello";
+
+        // When
+        business.deleteCoursesNotRelatedToSpring("Leandro");
+
+        // Then
+        then(mockService).should(times(7)).deleteCourse(argumentCaptor.capture());
+        assertThat(argumentCaptor.getAllValues().size(), is(7));
     }
 }
