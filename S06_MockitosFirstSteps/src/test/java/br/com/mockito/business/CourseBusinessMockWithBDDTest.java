@@ -1,6 +1,6 @@
 package br.com.mockito.business;
 
-import br.com.mockito.service.CourseService;
+import br.com.mockito.services.CourseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

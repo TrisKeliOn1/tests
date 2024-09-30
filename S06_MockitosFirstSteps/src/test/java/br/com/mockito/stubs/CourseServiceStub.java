@@ -1,6 +1,6 @@
 package br.com.mockito.stubs;
 
-import br.com.mockito.service.CourseService;
+import br.com.mockito.services.CourseService;
 
 import java.util.Arrays;
 import java.util.List;

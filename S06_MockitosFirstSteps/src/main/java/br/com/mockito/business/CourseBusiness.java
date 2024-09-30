@@ -1,6 +1,6 @@
 package br.com.mockito.business;
 
-import br.com.mockito.service.CourseService;
+import br.com.mockito.services.CourseService;
 
 import java.util.ArrayList;
 import java.util.List;
