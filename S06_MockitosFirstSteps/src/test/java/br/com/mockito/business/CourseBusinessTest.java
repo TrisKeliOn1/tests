@@ -1,6 +1,7 @@
 package br.com.mockito.business;
 
-import br.com.mockito.service.CourseService;
+
+import br.com.mockito.services.CourseService;
 import br.com.mockito.stubs.CourseServiceStub;
 import org.junit.jupiter.api.Test;
 
